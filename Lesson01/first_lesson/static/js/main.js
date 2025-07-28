@@ -1,0 +1,1 @@
+console.log('This is the main.js file for the first_lesson app.');
