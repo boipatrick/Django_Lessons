@@ -17,10 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static # Serve media files during development
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('about/', views.about ),
-    path('posts/', include('posts.urls')), #Register the posts app URLs
+    path('posts/', include('posts.urls')),
+    path('users/', include('users.urls')), 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Serve media files during development
+
+
