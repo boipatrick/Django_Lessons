@@ -14,9 +14,26 @@
 </head>
 <body>
     <nav>
-        <a href="/">🏠</a> | 
-        <a href="/about">😀</a> | 
-        <a href="{% url 'posts:list'%}">📰</a>
+        <a href="/">
+            <span role="img" aria-label="Home" title="Home">🏠</span>
+        </a> | 
+        <a href="/about">
+            <span role="img" aria-label="About" title="About">😀</span>
+        </a> | 
+        <a href="{% url 'posts:list' %}">
+            <span role="img" aria-label="Posts" title="Posts">📰</span>
+        </a> | 
+        <a href="{% url 'users:register' %}">
+            <span role="img" aria-label="User Registration" title="User Registration">🚀</span>
+        </a> | 
+        <a href="{% url 'users:login' %}">
+            <span role="img" aria-label="User login" title="User Login">🐱‍👤</span>
+        </a> |
+        <form class="logout" action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="logout" class="logout-button">
+                <span role="img" aria-label="Logout" title="Logout">🚪</span>
+            </button>
     </nav>
     <main>
         {% block content %}
